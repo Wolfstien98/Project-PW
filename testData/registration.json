@@ -1,0 +1,17 @@
+{
+    "url":"https://demowebshop.tricentis.com/",
+    "fname":"John",
+    "lname":"Smith",
+    "email":"jsmith38@gmail.com",
+    "password":"12345678",
+    "newsletterTxt":"Thank you for signing up! A verification email has been sent. We appreciate your interest.",
+    "company":"Deloitte",
+    "country":"United States",
+    "state":"Alaska",
+    "city":"Achorage",
+    "address1":"DSR Sunrise",
+    "address2":"Washingston Road",
+    "phone":"8573829487",
+    "zipcode":"984293",
+    "fax":"3452575439"
+}

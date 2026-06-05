@@ -1,0 +1,120 @@
+// https://demowebshop.tricentis.com/ 
+Login and Logout should be in each test script
+
+
+Test Steps:
+
+Registration
+Launch application
+Click Register
+Select Gender radio button
+Enter:
+First Name
+Last Name
+Email
+Password
+Confirm Password
+Click Register
+Newsletter
+Subscribe to newsletter checkbox
+Verify newsletter success message
+Navigate to Addresses section
+Click Add New Address
+Select Country from dropdown
+Save address
+
+--------------------------------------------------------------------
+
+Test Steps:
+
+Search Product
+Search for “Laptop”
+Verify search results displayed
+Verify:
+Product name
+Product price
+click the product
+Product availability
+Click “Add to compare list”
+Verify comparison table:
+Product names
+Click “Clear list”
+Verify comparison list becomes empty
+
+---------------------------------------------------------------------
+
+Test Steps:
+
+Open Books category
+Add multiple books to cart - 3
+Open Shopping Cart
+Verify:
+Product names
+Unit prices
+Quantities
+Increase quantity
+Click Update Cart
+Check the total price
+Remove one product
+update the cart 
+check price has changed or not from before price
+
+----------------------------------------------------------------------
+
+Test Steps:
+
+Navigate
+Open Books category
+Sorting
+
+Select:
+
+Sort by: Name A to Z
+Change:
+
+Display: 4
+Verify number of products displayed
+Navigate to next page
+Verify:
+URL changes
+Different products displayed
+Open second product
+click on add your review
+Give review title and add review text and give the rating
+click on submit review
+Verify the product review submitted successfully message
+
+-------------------------------------------------------------------------
+
+Test Steps:
+
+Login to application
+Search any product
+Open product details
+
+Click:
+
+Email a friend
+Verify email form displayed
+Enter:
+give any email
+Personal message - any message
+Click Send Email
+Verify success message
+Logout from application
+Open product page
+Click Email a Friend
+Verify validation/error message for guest user
+
+--------------------------------------------------------------------------
+
+Test Steps:
+
+Scroll to footer
+Click Facebook link
+Verify new tab/window opens
+Switch to child window
+Verify URL
+Verify page title
+Close child window
+Return to parent window
