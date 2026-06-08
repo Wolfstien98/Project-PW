@@ -9,7 +9,7 @@ test('Registration', async({page})=>{
     await page.locator("#gender-male").check()
     await page.locator("#FirstName").fill(registrationJSON.fname)
     await page.locator("#LastName").fill(registrationJSON.lname)
-    await page.locator("#Email").fill(registrationJSON.email)
+    await page.locator("#Email").fill(Date.now()+registrationJSON.email)
     await page.locator("#Password").fill(registrationJSON.password)
     await page.locator("#ConfirmPassword").fill(registrationJSON.password)
     await page.locator("#register-button").click()
