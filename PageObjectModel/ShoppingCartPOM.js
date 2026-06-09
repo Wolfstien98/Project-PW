@@ -24,13 +24,14 @@ export class ShoppingCartPOM {
             index=index+1
             
         }
-        await page.screenshot({path:`screenshot/task1/${time}.png`})
+        
 
         // await multipress(addButton[0],Number(shoppingJSON.quantity[0]))
         // await multipress(addButton[1],Number(shoppingJSON.quantity[1]))
         // await multipress(addButton[2],Number(shoppingJSON.quantity[2]))
 
         await this.checkout.click()
+        await this.page.screenshot({path:`screenshot/task1/${time}.png`})
 
         // const productName= await this.pName.all()
         // await multiElementVerify(productName,shoppingJSON.product,"text")
