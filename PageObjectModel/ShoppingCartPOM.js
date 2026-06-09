@@ -23,6 +23,7 @@ export class ShoppingCartPOM {
             }
             
         }
+        
         // await multipress(addButton[0],Number(shoppingJSON.quantity[0]))
         // await multipress(addButton[1],Number(shoppingJSON.quantity[1]))
         // await multipress(addButton[2],Number(shoppingJSON.quantity[2]))
