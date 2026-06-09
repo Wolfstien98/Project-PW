@@ -24,6 +24,7 @@ export class ShoppingCartPOM {
             index=index+1
             
         }
+        await page.screenshot({path:`screenshot/task1/${time}.png`})
 
         // await multipress(addButton[0],Number(shoppingJSON.quantity[0]))
         // await multipress(addButton[1],Number(shoppingJSON.quantity[1]))
