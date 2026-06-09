@@ -17,7 +17,7 @@ export class ShoppingCartPOM {
         await this.sBookNavi.click()
         const addButton= await this.addCart.all()
         for (let alocator of addButton) {
-            for (let index = 0; index < array.length; index++) {
+            for (let index = 0; index < 3; index++) {
                 await multipress(alocator,Number(shoppingJSON.quantity[index]))
                 
             }
