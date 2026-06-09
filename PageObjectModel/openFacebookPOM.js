@@ -14,7 +14,8 @@ export class openFacebookPOM {
         await page1.waitForLoadState()
         await page1.bringToFront()
         await expect(page1.url()).toContain(openJSON.url);
-        await expect(page1.title()).toContain(openJSON.title);
+        let pTitle= await page1.title()
+        await expect(pTitle).toContain(openJSON.title);
         await page1.close()
         await this.page.bringToFront()
     }
