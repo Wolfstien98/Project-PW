@@ -3,6 +3,7 @@ import registrationJSON from "../../testData/registration.json"
 import openJSON from "../../testData/openfacebook.json"
 import { newPage } from "../../utils/openFacebook"
 import { LoginPOM } from "../../PageObjectModel/LoginPOM"
+import { openFacebookPOM } from "../../PageObjectModel/openFacebookPOM"
 
 //json 
 // test('Opening facebook', async({page})=>{
@@ -53,17 +54,9 @@ test('Opening facebook', async({page})=>{
     await page.goto(registrationJSON.url)
     //login
     const loginMod=new LoginPOM(page)
-    
+    const fbMod=new openFacebookPOM(page)
     await loginMod.login()
 
     //open facebook
-    await page.locator("//a[text()='Facebook']").scrollIntoViewIfNeeded()
-
-    let [page1]= await newPage(page,"//a[text()='Facebook']")
-    await page1.waitForLoadState()
-    await page1.bringToFront()
-    await expect(page1).toHaveURL(openJSON.url);
-    await expect(page1).toHaveTitle(openJSON.title);
-    await page1.close()
-    await page.bringToFront()
+    await fbMod.openFB()
 })

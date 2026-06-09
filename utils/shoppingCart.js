@@ -21,10 +21,10 @@ export async function multiElementVerify(locator,data,vtype) {
     }
 }
 
-export async function updateNVerify(page,locator,value,locator2,locator3,value2){
+export async function updateNVerify(locator,value,locator2,locator3,value2){
     await locator.fill(value)
-    await page.locator(locator2).click()
-    await expect(page.locator(locator3)).toHaveText(value2)
+    await locator2.click()
+    await expect(locator3).toHaveText(value2)
 }
 
 export async function multiFill(locator,value) {

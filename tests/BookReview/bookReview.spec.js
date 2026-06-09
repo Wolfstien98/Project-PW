@@ -4,6 +4,7 @@ import bookJSON from "../../testData/bookReview.json"
 import { selectDropdown } from "../../utils/registration"
 import { getTxtArray, newPageItems } from "../../utils/bookReview"
 import { LoginPOM } from "../../PageObjectModel/LoginPOM"
+import { BookReviewPOM } from "../../PageObjectModel/BookReviewPOM"
 //json 
 // test('Book Review', async({page})=>{
 //     await page.goto(registrationJSON.url)
@@ -92,35 +93,11 @@ test('Book Review', async({page})=>{
     await page.goto(registrationJSON.url)
     //login
     const loginMod=new LoginPOM(page)
-        
+    const reviewMod=new BookReviewPOM(page)
+
     await loginMod.login()
 
     //Book Review
-    await page.locator("(//a[contains(text(),'Books')])[3]").click()
-    await selectDropdown(page,"#products-orderby",bookJSON.sort)
-    // await page.locator("#products-orderby").click()
-    // await page.locator("#products-orderby").selectOption(bookJSON.sort)
-    await selectDropdown(page,"#products-pagesize",bookJSON.noOfItems)
-    // await page.locator("#products-pagesize").click()
-    // await page.locator("#products-pagesize").selectOption(bookJSON.noOfItems)
-    const productTitle= await page.locator("//h2[@class='product-title']/child::a")
-    await expect(productTitle).toHaveCount(4)
-    const firstPageItems= await productTitle.all()
-    let itemArray=await getTxtArray(firstPageItems)
-    
-    const oldURL= page.url()
-    await page.locator("//a[text()='Next']").click()
-    await expect(page).not.toHaveURL(oldURL)
-
-    const secondPageItems= await page.locator("//h2[@class='product-title']/child::a").all()
-    
-    await newPageItems(secondPageItems,itemArray)
-    await secondPageItems[1].click()
-    await page.locator("//a[text()='Add your review']").click()
-    await page.locator("#AddProductReview_Title").fill(bookJSON.reviewTitle)
-    await page.locator("#AddProductReview_ReviewText").fill(bookJSON.reviewText)
-    await page.locator("#addproductrating_4").check()
-    await page.locator("//input[@name='add-review']").click()
-    await expect(page.locator("//div[@class='result']")).toBeVisible()
+    await reviewMod.bookReviewer()
 
 })

@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
 
-export async function matchText(page,locator,text) {
-    await expect(page.locator(locator)).toHaveText(text)
+export async function matchText(locator,text) {
+    await expect(locator).toHaveText(text)
 }

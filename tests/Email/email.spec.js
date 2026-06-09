@@ -2,6 +2,7 @@ import {test,expect} from "@playwright/test"
 import registrationJSON from "../../testData/registration.json"
 import emailJSON from "../../testData/email.json"
 import { LoginPOM } from "../../PageObjectModel/LoginPOM"
+import { emailPOM } from "../../PageObjectModel/emailPOM"
 
 //with json
 // test('Friend Email', async({page})=>{
@@ -42,29 +43,15 @@ test('Friend Email', async({page})=>{
     await page.goto(registrationJSON.url)
     //login
     const loginMod=new LoginPOM(page)
-    
+    const emailMod=new emailPOM(page)
     await loginMod.login()
 
     //email
-    await page.locator('#small-searchterms').fill(emailJSON.product)
-    await page.locator('//input[@value="Search"]').click()
-    await page.locator('//div[@class="product-item"]/child::div[@class="picture"]/child::a/child::img').click()
-    await page.locator("//input[@value='Email a friend']").click()
-    await expect(page.locator("#YourEmailAddress")).toHaveValue(registrationJSON.email)
-    await page.locator('#FriendEmail').fill(emailJSON.fEmail)
-    await page.locator('#PersonalMessage').fill(emailJSON.pMessage)
-    await page.locator("//input[@value='Send email']").click()
-    await expect(page.locator("//div[@class='result']")).toBeVisible()
+    await emailMod.emailWithLogin()
 
     //logout
-    await page.locator("//a[text()='Log out']").click()
+    await loginMod.logout()
 
     //email without login
-    await page.locator('(//div[@class="product-item"]/child::div[@class="picture"]/child::a/child::img)[1]').click()
-    await page.locator("//input[@value='Email a friend']").click()
-    await page.locator('#FriendEmail').fill(emailJSON.fEmail)
-    await page.locator('#YourEmailAddress').fill(registrationJSON.email)
-    await page.locator('#PersonalMessage').fill(emailJSON.pMessage)
-    await page.locator("//input[@value='Send email']").click()
-    await expect(page.locator("//div[@class='validation-summary-errors']")).toBeVisible()
+    await emailMod.emailWithNoLogin()
 })

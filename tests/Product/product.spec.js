@@ -4,6 +4,7 @@ import productJSON from "../../testData/product.json"
 import { txtVisible } from "../../utils/registration.js"
 import { matchText } from "../../utils/product.js"
 import { LoginPOM } from "../../PageObjectModel/LoginPOM.js"
+import { ProductPom } from "../../PageObjectModel/ProductPom.js"
 
 //json
 // test('Product', async({page})=>{
@@ -67,25 +68,10 @@ test('Product', async({page})=>{
     await page.goto(registrationJSON.url)
     //login
     const loginMod=new LoginPOM(page)
+    const productMod=new ProductPom(page)
     
     await loginMod.login()
-
-    //Search Product
-    await page.locator('#small-searchterms').fill(productJSON.product)
-    await page.locator('//input[@value="Search"]').click()
-    await matchText(page,'//h2[@class="product-title"]/child::a',productJSON.pname)
-    await matchText(page,'//span[@class="price actual-price"]',productJSON.price)
-    // await expect(page.locator('//h2[@class="product-title"]/child::a')).toHaveText(productJSON.pname)
-    // await expect(page.locator('//span[@class="price actual-price"]')).toHaveText(productJSON.price)
-    await page.locator('//div[@class="product-item"]/child::div[@class="picture"]/child::a/child::img').click()
-    await matchText(page,'//div[@class="stock"]/child::span[@class="value"]',productJSON.avialability)
-    //await expect(page.locator('//div[@class="stock"]/child::span[@class="value"]')).toHaveText(productJSON.avialability)
-    await page.locator('//div[@class="compare-products"]/child::input').click()
-    await matchText(page,'//td[@class="a-center"]/child::a',productJSON.pname)
-    //await expect(page.locator('//td[@class="a-center"]/child::a')).toHaveText(productJSON.pname)
-    await page.locator('//a[@class="clear-list"]').click()
-    await txtVisible(page,productJSON.listCleartxt)
-    //await expect(page.getByText(productJSON.listCleartxt)).toBeVisible()
+    await productMod.productPage()
     
 
 
