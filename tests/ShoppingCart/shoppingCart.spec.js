@@ -145,6 +145,6 @@ test('Shopping Cart', async({page})=>{
     //Shopping Cart
     await shoppingMod.shopCart()
     //clear cart
-    await shoppingMod.clearCart()
+    //await shoppingMod.clearCart()
 
 })

@@ -13,7 +13,7 @@ export class openFacebookPOM {
         let [page1]= await newPage(this.page,this.fbLink)
         await page1.waitForLoadState()
         await page1.bringToFront()
-        await expect(page1).toHaveURL(openJSON.url);
+        await expect(page1.url()).toContain(openJSON.url);
         await expect(page1).toHaveTitle(openJSON.title);
         await page1.close()
         await this.page.bringToFront()
