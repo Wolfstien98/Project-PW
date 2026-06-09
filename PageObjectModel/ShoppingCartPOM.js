@@ -31,6 +31,7 @@ export class ShoppingCartPOM {
         // await multipress(addButton[2],Number(shoppingJSON.quantity[2]))
 
         await this.checkout.click()
+        let time=new Date().getTime()
         await this.page.screenshot({path:`screenshot/task1/${time}.png`})
 
         // const productName= await this.pName.all()
