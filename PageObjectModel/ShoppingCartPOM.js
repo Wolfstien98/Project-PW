@@ -16,12 +16,18 @@ export class ShoppingCartPOM {
     async shopCart(){
         await this.sBookNavi.click()
         const addButton= await this.addCart.all()
+        for (let alocator of addButton) {
+            for (let index = 0; index < array.length; index++) {
+                await multipress(alocator,Number(shoppingJSON.quantity[index]))
+                
+            }
+            
+        }
+        // await multipress(addButton[0],Number(shoppingJSON.quantity[0]))
+        // await multipress(addButton[1],Number(shoppingJSON.quantity[1]))
+        // await multipress(addButton[2],Number(shoppingJSON.quantity[2]))
 
-        await multipress(addButton[0],Number(shoppingJSON.quantity[0]))
-        await multipress(addButton[1],Number(shoppingJSON.quantity[1]))
-        await multipress(addButton[2],Number(shoppingJSON.quantity[2]))
-
-        // await this.checkout.click()
+        await this.checkout.click()
 
         // const productName= await this.pName.all()
         // await multiElementVerify(productName,shoppingJSON.product,"text")
