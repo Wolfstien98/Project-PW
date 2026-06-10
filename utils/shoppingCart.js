@@ -1,9 +1,9 @@
 import { expect } from "@playwright/test";
 
-export async function multipress(locator,value) {
+export async function multipress(page,locator,value) {
     for (let index = 0; index < value; index++) {
         await locator.click()
-        
+        await locator.page().waitForTimeout(500);
     }
 }
 

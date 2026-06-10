@@ -1,6 +1,6 @@
 {
-    "product":["Computing and Internet","Health Book","Fiction"],
-    "price":["10.00","10.00","24.00"],
+    "product":["Computing and Internet","Fiction","Health Book"],
+    "price":["10.00","24.00","10.00"],
     "quantity":["3","1","2"],
     "total":"170.00",
     "total2":"150.00",

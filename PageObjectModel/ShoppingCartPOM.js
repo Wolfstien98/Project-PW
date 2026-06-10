@@ -16,37 +16,37 @@ export class ShoppingCartPOM {
     async shopCart(){
         await this.sBookNavi.click()
         const addButton= await this.addCart.all()
-        let index=0
-        for (let alocator of addButton) {
+        //let index=0
+        // for (let alocator of addButton) {
             
-            await multipress(alocator,Number(shoppingJSON.quantity[index]))
+        //     await multipress(alocator,Number(shoppingJSON.quantity[index]))
                 
-            index=index+1
+        //     index=index+1
             
-        }
+        // }
         
 
-        // await multipress(addButton[0],Number(shoppingJSON.quantity[0]))
-        // await multipress(addButton[1],Number(shoppingJSON.quantity[1]))
-        // await multipress(addButton[2],Number(shoppingJSON.quantity[2]))
+        await multipress(this.page,addButton[0],Number(shoppingJSON.quantity[0]))
+        await multipress(this.page,addButton[1],Number(shoppingJSON.quantity[1]))
+        await multipress(this.page,addButton[2],Number(shoppingJSON.quantity[2]))
 
         await this.checkout.click()
-        let time=new Date().getTime()
-        await this.page.screenshot({path:`screenshot/task1/${time}.png`})
+        // let time=new Date().getTime()
+        // await this.page.screenshot({path:`screenshot/task1/${time}.png`})
 
-        // const productName= await this.pName.all()
-        // await multiElementVerify(productName,shoppingJSON.product,"text")
+        const productName= await this.pName.all()
+        await multiElementVerify(productName,shoppingJSON.product,"text")
 
         
-        // const productPrice= await this.pPrice.all()
-        // await multiElementVerify(productPrice,shoppingJSON.price,"text")
+        const productPrice= await this.pPrice.all()
+        await multiElementVerify(productPrice,shoppingJSON.price,"text")
         
         
-        // const productQTY= await this.pQTY.all()
-        // await multiElementVerify(productQTY,shoppingJSON.quantity,"value")
+        const productQTY= await this.pQTY.all()
+        await multiElementVerify(productQTY,shoppingJSON.quantity,"value")
         
-        // await updateNVerify(productQTY[1],shoppingJSON.updateQTY[0],this.updateCart,this.pTotal,shoppingJSON.total)
-        // await updateNVerify(productQTY[2],shoppingJSON.updateQTY[1],this.updateCart,this.pTotal,shoppingJSON.total2)
+        await updateNVerify(productQTY[1],shoppingJSON.updateQTY[0],this.updateCart,this.pTotal,shoppingJSON.total)
+        await updateNVerify(productQTY[2],shoppingJSON.updateQTY[1],this.updateCart,this.pTotal,shoppingJSON.total2)
         
     }
     async clearCart(){
