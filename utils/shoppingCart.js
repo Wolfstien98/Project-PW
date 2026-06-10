@@ -1,9 +1,19 @@
 import { expect } from "@playwright/test";
 
-export async function multipress(page,locator,value) {
+export async function multipress(page, locator, value) {
     for (let index = 0; index < value; index++) {
-        await locator.click()
-        await locator.page().waitForTimeout(500);
+        await locator.click();
+        
+        // Wait for the green success notification to appear
+        const notification = page.locator('#bar-notification');
+        await notification.waitFor({ state: 'visible' });
+        
+        // Click the close (X) button on the notification so it doesn't block the next click
+        const closeBtn = page.locator('#bar-notification .close');
+        if (await closeBtn.isVisible()) {
+            await closeBtn.click();
+            await notification.waitFor({ state: 'hidden' });
+        }
     }
 }
 

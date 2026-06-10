@@ -14,16 +14,12 @@ export class ShoppingCartPOM {
         this.pTotal=page.locator("//span[@class='product-price order-total']/child::strong")
     }
     async shopCart(){
+        await Promise.all([
+        this.page.waitForNavigation(), // Waits for the page to load the new URL
         await this.sBookNavi.click()
+        ]);
+        
         const addButton= await this.addCart.all()
-        //let index=0
-        // for (let alocator of addButton) {
-            
-        //     await multipress(alocator,Number(shoppingJSON.quantity[index]))
-                
-        //     index=index+1
-            
-        // }
         
 
         await multipress(this.page,addButton[0],Number(shoppingJSON.quantity[0]))

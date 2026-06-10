@@ -4,7 +4,7 @@ import shoppingJSON from "../../testData/shoppingCart.json"
 import { multipress, multiElementVerify, updateNVerify, multiFill } from "../../utils/shoppingCart"
 import { LoginPOM } from "../../PageObjectModel/LoginPOM"
 import { ShoppingCartPOM } from "../../PageObjectModel/ShoppingCartPOM"
-
+import { RegistrationPOM } from "../../PageObjectModel/RegistrationPOM.js"
 //json
 // test('Shopping Cart', async({page})=>{
 //     await page.goto(registrationJSON.url)
@@ -133,18 +133,19 @@ import { ShoppingCartPOM } from "../../PageObjectModel/ShoppingCartPOM"
 // })
 
 //json utils and pom
-// test('Shopping Cart', async({page})=>{
-//     await page.goto(registrationJSON.url)
+test('Shopping Cart', async({page})=>{
+    await page.goto(registrationJSON.url)
 
-//     //login
-//     const loginMod=new LoginPOM(page)
-//     const shoppingMod=new ShoppingCartPOM(page)
+    //login
+    //  const loginMod=new LoginPOM(page)
+    const registrationMod= new RegistrationPOM(page)
+    const shoppingMod=new ShoppingCartPOM(page)
+    await registrationMod.registeration()
+    // await loginMod.login()
 
-//     await loginMod.login()
+    //Shopping Cart
+    await shoppingMod.shopCart()
+    //clear cart
+    await shoppingMod.clearCart()
 
-//     //Shopping Cart
-//     await shoppingMod.shopCart()
-//     //clear cart
-//     await shoppingMod.clearCart()
-
-// })
+ })
