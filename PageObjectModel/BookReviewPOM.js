@@ -30,7 +30,11 @@ export class BookReviewPOM {
         let itemArray=await getTxtArray(firstPageItems)
         
         const oldURL= this.page.url()
-        await this.bNextNavi.click()
+        
+        await Promise.all([
+        this.page.waitForNavigation(), // Waits for the page to load the new URL
+        this.bNextNavi.click()
+        ]);
         await expect(this.page).not.toHaveURL(oldURL)
 
         const secondPageItems= await this.bTitle.all()

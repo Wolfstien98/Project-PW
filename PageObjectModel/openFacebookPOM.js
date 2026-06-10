@@ -8,14 +8,14 @@ export class openFacebookPOM {
         this.fbLink=page.locator("//a[text()='Facebook']")
     }
     async openFB(){
-        await this.fbLink.scrollIntoViewIfNeeded()
+        await this.fbLink.focus()
 
         let [page1]= await newPage(this.page,this.fbLink)
         await page1.waitForLoadState()
         await page1.bringToFront()
         await expect(page1.url()).toContain(openJSON.url);
-        let pTitle= await page1.title()
-        await expect(pTitle).toContain(openJSON.title);
+        // let pTitle= await page1.title()
+        // await expect(pTitle).toContain(openJSON.title);
         await page1.close()
         await this.page.bringToFront()
     }

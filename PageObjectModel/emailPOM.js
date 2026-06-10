@@ -20,7 +20,10 @@ export class emailPOM {
 
     async emailWithLogin(){
         await this.searchBox.fill(emailJSON.product)
-        await this.searchButton.click()
+        await Promise.all([
+        this.page.waitForNavigation(), // Waits for the page to load the new URL
+        this.searchButton.click()
+        ]);
         await this.product1.click()
         await this.emailFriendButton.click()
         await expect(this.currentEmail).toHaveValue(registrationJSON.email)

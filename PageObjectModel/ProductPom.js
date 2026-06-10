@@ -18,7 +18,10 @@ export class ProductPom {
     }
     async productPage(){
         await this.pSearchBox.fill(productJSON.product)
-        await this.pSearchButton.click()
+        await Promise.all([
+        this.page.waitForNavigation(), // Waits for the page to load the new URL
+        this.pSearchButton.click()
+        ]);
         await matchText(this.pName,productJSON.pname)
         await matchText(this.pPrice,productJSON.price)
         await this.pIMG.click()
